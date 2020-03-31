@@ -1,5 +1,5 @@
 """Flask app for Cupcakes"""
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Cupcake
 
@@ -25,7 +25,8 @@ def serialize_cupcake(cupcake):
             "rating": cupcake.rating,
             "image": cupcake.image
             }
-
+# ========================================================
+# API routes
 
 @app.route('/api/cupcakes')
 def list_all():
@@ -82,5 +83,15 @@ def delete_cupcake(cupcake_id):
 
     
 
+# ========================================================
+# ux routes
+
+@app.route("/")
+def get_index():
+    """brings us to the cupcake listing HTML page"""
+
+    cupcakes=Cupcake.query.all()
+
+    return render_template('listing.html', cupcakes=cupcakes)
 
 

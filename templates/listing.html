@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Welcome to Cupcake Delight!
+{% endblock %}
+
+{% block content %}
+<div>
+  {% for cupcake in cupcakes %}
+  <img src="{{cupcake.image}}" alt="">
+  <p><a href="">{{cupcake.flavor}}</a></p>
+  {% endfor %}
+</div>
+<form action="">
+  <h3>Add a Cupcake!</h3>
+  <label for="flavor">Flavor:</label>
+  <input id="flavor" name="flavor" type="text"><br>
+  <label for="size">Size:</label>
+  <input id="size" name="size" type="text"><br>
+  <label for="rating">rating:</label>
+  <input id="rating" name="rating" type="text"><br>
+  <label for="image">Image URL:</label>
+  <input id="image" name="image" type="text"><br>
+  <button type="submit" id="add-cupcake">Add a Cupcake!</button>
+</form>
+{% endblock %}
